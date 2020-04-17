@@ -17,46 +17,40 @@ import com.neo.util.Result;
 @RestController
 public class UserController {
 	
-	@Autowired
-	private UserMapper userMapper;
+	
 	
 	@Autowired
 	private UserService userService;
 	
 	@RequestMapping("/getUsers")
-	public List<User> getUsers() {
+	public Result<List<User>> getUsers() {
 		PageHelper.startPage(2, 2);
-		List<User> users=userMapper.getAll();
+		Result<List<User>> users=userService.getAll();
 		return users;
 	}
 	
     @RequestMapping("/getUser")
-    public User getUser(Long id) {
-    	User user=userMapper.getOne(id);
+    public Result<User> getUser(Long id) {
+    	Result<User> user = userService.getUser(id);
         return user;
     }
     
     @RequestMapping("/add")
-    public void save(@RequestBody User user) {
-    	userMapper.insert(user);
+    public Result<User> save(@RequestBody User user) {
+    	Result<User> result = userService.insert(user);
+    	return result;
     }
     
     @RequestMapping(value="update")
-    public void update(@RequestBody User user) {
-    	userMapper.update(user);
+    public Result<User> update(@RequestBody User user) {
+    	Result<User> update = userService.update(user);
+    	return update;
     }
     
     @RequestMapping(value="/delete/{id}")
-    public void delete(@PathVariable("id") Long id) {
-    	userMapper.delete(id);
-    }
-    
-    
-    
-    @RequestMapping(value="getOne")
-    public Result<?> getOne(Long id ) {
-    	Result<?> result = userService.getOne(id);
-    	return result;
+    public Result<User> delete(@PathVariable("id") Long id) {
+    	Result<User> delete = userService.delete(id);
+    	return delete;
     }
     
     

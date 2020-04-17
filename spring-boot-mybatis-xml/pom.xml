@@ -44,23 +44,64 @@
 		</dependency>
 		
 		
-		 <dependency>
+	<dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-devtools</artifactId>
       <!-- optional标记依赖是否可选-->
         <optional>true</optional>
     <!--  provided 已体提供依赖范围。对于编译和测试classpath有效，运行时无效 -->
         <scope>provide</scope>
-   </dependency>
+      </dependency>
    
-   <dependency>
-    <groupId>com.github.pagehelper</groupId>
-    <artifactId>pagehelper-spring-boot-starter</artifactId>
-    <!-- 特别注意版本问题, 看到评论以后得以纠正 -->
-    <version>1.2.10</version>
-    </dependency>
+	   <dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper-spring-boot-starter</artifactId>
+		    <!-- 特别注意版本问题, 看到评论以后得以纠正 -->
+		    <version>1.2.10</version>
+	   </dependency>
     
-
+            <!-- 引入缓存 starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!-- 引入 redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        
+	    <dependency>
+	      <groupId>org.aspectj</groupId>
+	      <artifactId>aspectjrt</artifactId>
+	      <version>1.7.3</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.aspectj</groupId>
+	      <artifactId>aspectjweaver</artifactId>
+	      <version>1.7.3</version>
+	    </dependency>
+	    
+	    
+	     <!--LOMBOK-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.20</version>
+            <scope>provided</scope>
+        </dependency>
+        
+          <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.7.0</version>
+        </dependency>
 	</dependencies>
 	
 	<build>

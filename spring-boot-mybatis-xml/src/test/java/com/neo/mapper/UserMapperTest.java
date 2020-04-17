@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.neo.model.User;
+import com.neo.service.UserService;
 import com.neo.enums.UserSexEnum;
 
 @RunWith(SpringRunner.class)
@@ -18,13 +19,18 @@ public class UserMapperTest {
 
 	@Autowired
 	private UserMapper userMapper;
-
+    
+	@Autowired
+	private UserService userService;
+	
 	@Test
 	public void testInsert() throws Exception {
-		userMapper.insert(new User("aa", "a123456", UserSexEnum.MAN));
-		userMapper.insert(new User("bb", "b123456", UserSexEnum.WOMAN));
-		userMapper.insert(new User("cc", "b123456", UserSexEnum.WOMAN));
-
+		/*
+		 * userMapper.insert(new User("aa", "a123456", UserSexEnum.MAN));
+		 * userMapper.insert(new User("bb", "b123456", UserSexEnum.WOMAN));
+		 * userMapper.insert(new User("cc", "b123456", UserSexEnum.WOMAN));
+		 */
+		userService.insert(new User("dd", "d123456", UserSexEnum.WOMAN));
 		Assert.assertEquals(3, userMapper.getAll().size());
 	}
 
@@ -40,12 +46,14 @@ public class UserMapperTest {
 	
 	
 	@Test
-	public void testUpdate() throws Exception {
-		User user = userMapper.getOne(6l);
+	public void testUpdate() {
+		User user = userMapper.getOne(1L);
 		System.out.println(user.toString());
+		System.out.println("===========");
 		user.setNickName("neo");
 		userMapper.update(user);
-		Assert.assertTrue(("neo".equals(userMapper.getOne(6l).getNickName())));
+        Assert.assertTrue(("neo".equals(userMapper.getOne(1L).getNickName())));
+		  
 	}
 
 }
